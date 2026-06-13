@@ -1,0 +1,19 @@
+С предыдущими задачами покончено, всё работает хорошо. Теперь я хочу сделать аутентификацию и буду использовать библиотеку better-auth. Вот ссылка для тебя: "https://better-auth.com/llms.txt". И ещё одна ссылка для тебя: "https://mcp.better-auth.com/mcp". Мне нужны страница sign-up. Учти, что я использую Shadcn. Для регистрации Я хочу использовать только один social provider - google. То есть, мне не нужна регистрация с email и паролем, только google (с помощью better-auth). Возможно, необходимо установить дополнительные библиотеки? Better-auth я уже установил и произвел первоначальную настройку, так же создал и подключил postgresql с нужными для better-auth моделями. Мне нужен код самой страницы sign-up и правильный код auth.ts, который у меня сейчас такой: "import { betterAuth } from "better-auth";
+
+import { prismaAdapter } from "better-auth/adapters/prisma";
+
+import prisma from "@/lib/prisma";
+
+
+
+export const auth = betterAuth({
+
+  database: prismaAdapter(prisma, {
+
+    provider: "postgresql",
+
+  }),
+
+});
+
+"

@@ -1,0 +1,21 @@
+{
+  "HomePage": {
+    "title": "Hello world!"
+  },
+  "Footer": {
+    "description": "AI tools and resources.",
+    "product": "Product",
+    "company": "Company",
+    "legal": "Legal",
+
+    "features": "Features",
+    "pricing": "Pricing",
+    "about": "About",
+    "contact": "Contact",
+
+    "privacy": "Privacy Policy",
+    "terms": "Terms of Service",
+
+    "copyright": "Rebecca Stutzer."
+  }
+}
