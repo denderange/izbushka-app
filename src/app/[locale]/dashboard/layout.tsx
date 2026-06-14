@@ -1,4 +1,5 @@
-import { requireAdmin } from "@/lib/helpers/admin";
+import { DashboardNav } from "@/components/dashboard/dashboard-nav";
+import { requireAdmin } from "@/lib/helpers/require-admin";
 
 export default async function DashboardLayout({
   children,
@@ -7,5 +8,11 @@ export default async function DashboardLayout({
 }) {
   await requireAdmin();
 
-  return <>{children}</>;
+  return (
+    <div className="space-y-6">
+      <DashboardNav />
+
+      <div className="p-4">{children}</div>
+    </div>
+  );
 }

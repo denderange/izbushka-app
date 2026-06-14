@@ -42,7 +42,8 @@ export function UserMenu({ name, email, image, role }: Props) {
 
       <DropdownMenuContent
         align="end"
-        className="w-64">
+        className="w-64"
+      >
         <div className="px-2 py-2">
           <p className="font-medium">{name}</p>
 
@@ -53,7 +54,10 @@ export function UserMenu({ name, email, image, role }: Props) {
           <>
             <DropdownMenuSeparator />
 
-            <DropdownMenuItem asChild>
+            <DropdownMenuItem
+              asChild
+              className="cursor-pointer"
+            >
               <Link href="/dashboard">
                 <LayoutDashboard className="mr-2 h-4 w-4" />
                 Dashboard
@@ -66,7 +70,8 @@ export function UserMenu({ name, email, image, role }: Props) {
 
         <DropdownMenuItem
           onClick={handleSignOut}
-          className="cursor-pointer">
+          className="cursor-pointer"
+        >
           <LogOut className="mr-2 h-4 w-4" />
           Sign out
         </DropdownMenuItem>
