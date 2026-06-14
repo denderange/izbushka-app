@@ -18,4 +18,13 @@ export const auth = betterAuth({
       prompt: "select_account",
     },
   },
+
+  user: {
+    additionalFields: {
+      role: {
+        type: "string",
+        defaultValue: "user",
+      },
+    },
+  },
 });

@@ -38,16 +38,16 @@ export default async function RootLayout({ children, params }: Props) {
   }
 
   return (
-    <html
-      lang={locale}
-      className={cn(
-        "antialiased",
-        geistSans.variable,
-        geistMono.variable,
-        "font-sans",
-        inter.variable,
-      )}>
-      <body className="min-h-full flex flex-col">
+    <html lang={locale}>
+      <body
+        className={cn(
+          "min-h-screen flex flex-col",
+          "antialiased",
+          "font-sans",
+          geistSans.variable,
+          geistMono.variable,
+          inter.variable,
+        )}>
         <NextIntlClientProvider>
           <Header />
           <main className="flex-1">

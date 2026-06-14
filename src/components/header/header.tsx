@@ -1,24 +1,15 @@
-"use client";
-import { cn } from "@/lib/utils";
-import { useScroll } from "@/hooks/use-scroll";
 import { Button } from "@/components/ui/button";
+import { Link } from "@/i18n/navigation";
+import { NAV_LINKS } from "@/lib/constants/nav";
 import { Logo } from "./logo";
 import { MobileNav } from "./mobile-nav";
 import { LocaleSwitcher } from "./locale-switcher";
-import { Link, usePathname } from "@/i18n/navigation";
-import { NAV_LINKS } from "@/lib/constants/nav";
+import { HeaderShell } from "./header-shell";
+import { AuthButton } from "../auth/auth-button";
 
-export function Header() {
-  const scrolled = useScroll(10);
-  const pathname = usePathname();
-
+export async function Header() {
   return (
-    <header
-      className={cn(
-        "sticky top-0 z-50 w-full border-b transition-colors",
-        scrolled &&
-          "bg-background/80 backdrop-blur-md supports-backdrop-filter:bg-background/60",
-      )}>
+    <HeaderShell>
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4">
         <Logo />
 
@@ -36,23 +27,11 @@ export function Header() {
         <div className="hidden md:flex items-center gap-2">
           <LocaleSwitcher />
 
-          <Button
-            asChild
-            size="sm">
-            <Link
-              href={{
-                pathname: "/sign-up",
-                query: {
-                  callbackUrl: pathname,
-                },
-              }}>
-              Sign Up
-            </Link>
-          </Button>
+          <AuthButton />
         </div>
 
         <MobileNav />
       </div>
-    </header>
+    </HeaderShell>
   );
 }
