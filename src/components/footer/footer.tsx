@@ -10,9 +10,9 @@ export function Footer() {
   const t = useTranslations("Footer");
 
   return (
-    <footer className="border-t">
+    <footer className="border-t mt-20">
       <Container>
-        <div className="py-16">
+        <div className="pt-16 pb-2">
           <div className="grid gap-12 md:grid-cols-2 lg:grid-cols-5">
             <div className="lg:col-span-2">
               <Logo />
@@ -31,7 +31,8 @@ export function Footer() {
                     <li key={link.key}>
                       <Link
                         href={link.href}
-                        className="text-sm text-muted-foreground transition-colors hover:text-foreground">
+                        className="text-sm text-muted-foreground transition-colors hover:text-foreground"
+                      >
                         {t(link.key)}
                       </Link>
                     </li>
@@ -41,8 +42,8 @@ export function Footer() {
             ))}
           </div>
 
-          <div className="mt-12 border-t pt-6">
-            <p className="text-sm text-muted-foreground">
+          <div className="mt-12 border-t pt-2">
+            <p className="text-sm text-muted-foreground mx-auto max-w-max">
               © {new Date().getFullYear()} {t("copyright")}
             </p>
           </div>

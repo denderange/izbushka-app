@@ -17,5 +17,30 @@
     "terms": "Terms of Service",
 
     "copyright": "Rebecca Stutzer."
+  },
+  "messagePage": {
+    "WriteMessageMeta": "Write a message",
+    "MessagePageDescription": "Send a message to our support team easily and securely.",
+    "MessagePageDescription_default": "Send a message to our support team quickly and securely.",
+    "Write a message": "Write a message",
+    "message": "message",
+    "suggection": "Here you can write your question, suggestion, or idea.",
+    "contact": "How can we contact you?",
+    "example": "For example, @telegram, email, or another method of communication",
+    "negation": "We will not use this information for spam. Only to reply to you.",
+    "text": "Message text",
+    "messageSent": "Message sent!",
+    "sendFailed": "Failed to send message"
+  },
+  "Buttons": {
+    "sending": "sending...",
+    "Send": "Send"
+  },
+  "zodMessages": {
+    "fieldRequired": "This field cannot be empty.",
+    "messageMin": "Message must contain at least 10 characters.",
+    "messageMax": "Message must not exceed 500 characters.",
+    "contactRequired": "Please provide a way to contact you.",
+    "contactMax": "Maximum 150 characters."
   }
 }

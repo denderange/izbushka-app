@@ -8,6 +8,7 @@ import { routing } from "@/i18n/routing";
 import { Footer } from "@/components/footer/footer";
 import { Container } from "@/components/layout/container";
 import { Header } from "@/components/header/header";
+import { Toaster } from "@/components/ui/sonner";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
 
@@ -47,13 +48,15 @@ export default async function RootLayout({ children, params }: Props) {
           geistSans.variable,
           geistMono.variable,
           inter.variable,
-        )}>
+        )}
+      >
         <NextIntlClientProvider>
           <Header />
           <main className="flex-1">
             <Container>{children}</Container>
           </main>
           <Footer />
+          <Toaster position="top-center" />
         </NextIntlClientProvider>
       </body>
     </html>
