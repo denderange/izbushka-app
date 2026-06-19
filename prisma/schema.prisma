@@ -152,6 +152,9 @@ model Image {
   name String
   url          String
   thumbnailUrl String?
+  filePath String?
+  fileType String?
+  fileSize Int?
   width  Int?
   height Int?
   alt String?

@@ -54,7 +54,14 @@ export const ModelName = {
   User: 'User',
   Session: 'Session',
   Account: 'Account',
-  Verification: 'Verification'
+  Verification: 'Verification',
+  Story: 'Story',
+  StoryTranslation: 'StoryTranslation',
+  StoryPage: 'StoryPage',
+  StoryPageTranslation: 'StoryPageTranslation',
+  Image: 'Image',
+  Comment: 'Comment',
+  StoryLike: 'StoryLike'
 } as const
 
 export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -131,6 +138,91 @@ export const VerificationScalarFieldEnum = {
 } as const
 
 export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[keyof typeof VerificationScalarFieldEnum]
+
+
+export const StoryScalarFieldEnum = {
+  id: 'id',
+  published: 'published',
+  publishedAt: 'publishedAt',
+  coverImageId: 'coverImageId',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt'
+} as const
+
+export type StoryScalarFieldEnum = (typeof StoryScalarFieldEnum)[keyof typeof StoryScalarFieldEnum]
+
+
+export const StoryTranslationScalarFieldEnum = {
+  id: 'id',
+  locale: 'locale',
+  slug: 'slug',
+  title: 'title',
+  description: 'description',
+  storyId: 'storyId'
+} as const
+
+export type StoryTranslationScalarFieldEnum = (typeof StoryTranslationScalarFieldEnum)[keyof typeof StoryTranslationScalarFieldEnum]
+
+
+export const StoryPageScalarFieldEnum = {
+  id: 'id',
+  storyId: 'storyId',
+  sortOrder: 'sortOrder',
+  imageId: 'imageId'
+} as const
+
+export type StoryPageScalarFieldEnum = (typeof StoryPageScalarFieldEnum)[keyof typeof StoryPageScalarFieldEnum]
+
+
+export const StoryPageTranslationScalarFieldEnum = {
+  id: 'id',
+  pageId: 'pageId',
+  locale: 'locale',
+  content: 'content'
+} as const
+
+export type StoryPageTranslationScalarFieldEnum = (typeof StoryPageTranslationScalarFieldEnum)[keyof typeof StoryPageTranslationScalarFieldEnum]
+
+
+export const ImageScalarFieldEnum = {
+  id: 'id',
+  fileId: 'fileId',
+  name: 'name',
+  url: 'url',
+  thumbnailUrl: 'thumbnailUrl',
+  filePath: 'filePath',
+  fileType: 'fileType',
+  fileSize: 'fileSize',
+  width: 'width',
+  height: 'height',
+  alt: 'alt',
+  createdAt: 'createdAt'
+} as const
+
+export type ImageScalarFieldEnum = (typeof ImageScalarFieldEnum)[keyof typeof ImageScalarFieldEnum]
+
+
+export const CommentScalarFieldEnum = {
+  id: 'id',
+  content: 'content',
+  isDeleted: 'isDeleted',
+  createdAt: 'createdAt',
+  updatedAt: 'updatedAt',
+  storyId: 'storyId',
+  userId: 'userId',
+  parentId: 'parentId'
+} as const
+
+export type CommentScalarFieldEnum = (typeof CommentScalarFieldEnum)[keyof typeof CommentScalarFieldEnum]
+
+
+export const StoryLikeScalarFieldEnum = {
+  userId: 'userId',
+  storyId: 'storyId',
+  createdAt: 'createdAt'
+} as const
+
+export type StoryLikeScalarFieldEnum = (typeof StoryLikeScalarFieldEnum)[keyof typeof StoryLikeScalarFieldEnum]
 
 
 export const SortOrder = {

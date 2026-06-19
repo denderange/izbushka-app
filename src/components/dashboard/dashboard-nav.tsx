@@ -16,6 +16,10 @@ const links = [
     href: "/dashboard/blog",
     label: "Blog",
   },
+  {
+    href: "/dashboard/media",
+    label: "Media",
+  },
 ];
 
 export function DashboardNav() {

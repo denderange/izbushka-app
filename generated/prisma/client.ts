@@ -61,3 +61,38 @@ export type Account = Prisma.AccountModel
  * 
  */
 export type Verification = Prisma.VerificationModel
+/**
+ * Model Story
+ * 
+ */
+export type Story = Prisma.StoryModel
+/**
+ * Model StoryTranslation
+ * 
+ */
+export type StoryTranslation = Prisma.StoryTranslationModel
+/**
+ * Model StoryPage
+ * 
+ */
+export type StoryPage = Prisma.StoryPageModel
+/**
+ * Model StoryPageTranslation
+ * 
+ */
+export type StoryPageTranslation = Prisma.StoryPageTranslationModel
+/**
+ * Model Image
+ * 
+ */
+export type Image = Prisma.ImageModel
+/**
+ * Model Comment
+ * 
+ */
+export type Comment = Prisma.CommentModel
+/**
+ * Model StoryLike
+ * 
+ */
+export type StoryLike = Prisma.StoryLikeModel
