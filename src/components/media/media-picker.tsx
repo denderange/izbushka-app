@@ -1,49 +1,19 @@
 "use client";
 
-import Image from "next/image";
+import { TImage } from "@/types/media";
+import MediaGrid from "./media-grid";
 
-type MediaPickerProps = {
-  images: {
-    id: string;
-    url: string;
-    name: string;
-  }[];
-
-  onSelect: (imageId: string) => void;
+type Props = {
+  images: TImage[];
+  onSelect: (image: TImage) => void;
 };
 
-export default function MediaPicker({ images, onSelect }: MediaPickerProps) {
+export default function MediaPicker({ images, onSelect }: Props) {
   return (
-    <div className="grid grid-cols-4 gap-4">
-      {images.map((image) => (
-        <button
-          key={image.id}
-          type="button"
-          onClick={() => onSelect(image.id)}
-        >
-          <Image
-            src={image.url}
-            alt={image.name}
-            width={200}
-            height={150}
-            className="rounded border"
-          />
-        </button>
-      ))}
-    </div>
+    <MediaGrid
+      images={images}
+      selectable
+      onSelect={onSelect}
+    />
   );
 }
-
-// Где он пригодится
-
-// Например форма создания сказки.
-
-// <MediaPicker
-//   images={images}
-//   onSelect={(imageId) => {
-//     form.setValue(
-//       "coverImageId",
-//       imageId
-//     );
-//   }}
-// />

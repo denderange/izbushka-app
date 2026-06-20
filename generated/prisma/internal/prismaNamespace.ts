@@ -1377,7 +1377,6 @@ export const ImageScalarFieldEnum = {
   name: 'name',
   url: 'url',
   thumbnailUrl: 'thumbnailUrl',
-  filePath: 'filePath',
   fileType: 'fileType',
   fileSize: 'fileSize',
   width: 'width',

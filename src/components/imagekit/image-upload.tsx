@@ -7,7 +7,6 @@ import {
   ImageKitUploadNetworkError,
   upload,
 } from "@imagekit/next";
-
 import { useRef, useState } from "react";
 
 type Props = {
@@ -17,9 +16,7 @@ type Props = {
 
 export default function ImageUpload({ folder, onSuccess }: Props) {
   const fileInputRef = useRef<HTMLInputElement>(null);
-
   const [progress, setProgress] = useState(0);
-
   const abortController = new AbortController();
 
   async function authenticator() {

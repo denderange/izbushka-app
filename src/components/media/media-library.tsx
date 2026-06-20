@@ -1,7 +1,6 @@
 "use client";
 
 import { TImage } from "@/types/media";
-
 import MediaGrid from "./media-grid";
 import MediaUpload from "./media-upload";
 

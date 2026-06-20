@@ -2,6 +2,7 @@
 
 import { revalidatePath } from "next/cache";
 import prisma from "../prisma";
+import { CreateImageInput } from "@/types/media";
 
 export async function getImages() {
   return prisma.image.findMany({
@@ -11,20 +12,15 @@ export async function getImages() {
   });
 }
 
-export async function createImage(data: {
-  fileId: string;
-  name: string;
-  url: string;
-  thumbnailUrl?: string;
-  width?: number;
-  height?: number;
-}) {
+export async function createImage(data: CreateImageInput) {
   return prisma.image.create({
     data: {
       fileId: data.fileId,
       name: data.name,
       url: data.url,
       thumbnailUrl: data.thumbnailUrl,
+      fileType: data.fileType,
+      fileSize: data.fileSize,
       width: data.width,
       height: data.height,
     },

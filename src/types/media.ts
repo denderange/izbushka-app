@@ -11,3 +11,14 @@ export type TImage = {
   alt: string | null;
   createdAt: Date;
 };
+
+export type CreateImageInput = {
+  fileId: string;
+  name: string;
+  url: string;
+  thumbnailUrl?: string;
+  fileType?: string;
+  fileSize?: number;
+  width?: number;
+  height?: number;
+};

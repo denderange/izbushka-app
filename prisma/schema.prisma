@@ -150,17 +150,17 @@ model Image {
   id String @id @default(cuid())
   fileId String @unique
   name String
-  url          String
+  url String
   thumbnailUrl String?
-  filePath String?
   fileType String?
   fileSize Int?
-  width  Int?
+  width Int?
   height Int?
   alt String?
   createdAt DateTime @default(now())
   pageImages StoryPage[] @relation("PageImage")
   coverStories Story[] @relation("StoryCoverImage")
+  @@index([createdAt])
 }
 
 model Comment {
