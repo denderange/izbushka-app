@@ -20,64 +20,88 @@ export type StoryModel = runtime.Types.Result.DefaultSelection<Prisma.$StoryPayl
 
 export type AggregateStory = {
   _count: StoryCountAggregateOutputType | null
+  _avg: StoryAvgAggregateOutputType | null
+  _sum: StorySumAggregateOutputType | null
   _min: StoryMinAggregateOutputType | null
   _max: StoryMaxAggregateOutputType | null
 }
 
+export type StoryAvgAggregateOutputType = {
+  viewCount: number | null
+}
+
+export type StorySumAggregateOutputType = {
+  viewCount: number | null
+}
+
 export type StoryMinAggregateOutputType = {
   id: string | null
+  viewCount: number | null
   published: boolean | null
   publishedAt: Date | null
-  coverImageId: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  coverImageId: string | null
 }
 
 export type StoryMaxAggregateOutputType = {
   id: string | null
+  viewCount: number | null
   published: boolean | null
   publishedAt: Date | null
-  coverImageId: string | null
   createdAt: Date | null
   updatedAt: Date | null
+  coverImageId: string | null
 }
 
 export type StoryCountAggregateOutputType = {
   id: number
+  viewCount: number
   published: number
   publishedAt: number
-  coverImageId: number
   createdAt: number
   updatedAt: number
+  coverImageId: number
   _all: number
 }
 
 
+export type StoryAvgAggregateInputType = {
+  viewCount?: true
+}
+
+export type StorySumAggregateInputType = {
+  viewCount?: true
+}
+
 export type StoryMinAggregateInputType = {
   id?: true
+  viewCount?: true
   published?: true
   publishedAt?: true
-  coverImageId?: true
   createdAt?: true
   updatedAt?: true
+  coverImageId?: true
 }
 
 export type StoryMaxAggregateInputType = {
   id?: true
+  viewCount?: true
   published?: true
   publishedAt?: true
-  coverImageId?: true
   createdAt?: true
   updatedAt?: true
+  coverImageId?: true
 }
 
 export type StoryCountAggregateInputType = {
   id?: true
+  viewCount?: true
   published?: true
   publishedAt?: true
-  coverImageId?: true
   createdAt?: true
   updatedAt?: true
+  coverImageId?: true
   _all?: true
 }
 
@@ -119,6 +143,18 @@ export type StoryAggregateArgs<ExtArgs extends runtime.Types.Extensions.Internal
   /**
    * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
    * 
+   * Select which fields to average
+  **/
+  _avg?: StoryAvgAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
+   * Select which fields to sum
+  **/
+  _sum?: StorySumAggregateInputType
+  /**
+   * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+   * 
    * Select which fields to find the minimum value
   **/
   _min?: StoryMinAggregateInputType
@@ -149,18 +185,23 @@ export type StoryGroupByArgs<ExtArgs extends runtime.Types.Extensions.InternalAr
   take?: number
   skip?: number
   _count?: StoryCountAggregateInputType | true
+  _avg?: StoryAvgAggregateInputType
+  _sum?: StorySumAggregateInputType
   _min?: StoryMinAggregateInputType
   _max?: StoryMaxAggregateInputType
 }
 
 export type StoryGroupByOutputType = {
   id: string
+  viewCount: number
   published: boolean
   publishedAt: Date | null
-  coverImageId: string | null
   createdAt: Date
   updatedAt: Date
+  coverImageId: string | null
   _count: StoryCountAggregateOutputType | null
+  _avg: StoryAvgAggregateOutputType | null
+  _sum: StorySumAggregateOutputType | null
   _min: StoryMinAggregateOutputType | null
   _max: StoryMaxAggregateOutputType | null
 }
@@ -185,11 +226,12 @@ export type StoryWhereInput = {
   OR?: Prisma.StoryWhereInput[]
   NOT?: Prisma.StoryWhereInput | Prisma.StoryWhereInput[]
   id?: Prisma.StringFilter<"Story"> | string
+  viewCount?: Prisma.IntFilter<"Story"> | number
   published?: Prisma.BoolFilter<"Story"> | boolean
   publishedAt?: Prisma.DateTimeNullableFilter<"Story"> | Date | string | null
-  coverImageId?: Prisma.StringNullableFilter<"Story"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Story"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Story"> | Date | string
+  coverImageId?: Prisma.StringNullableFilter<"Story"> | string | null
   coverImage?: Prisma.XOR<Prisma.ImageNullableScalarRelationFilter, Prisma.ImageWhereInput> | null
   translations?: Prisma.StoryTranslationListRelationFilter
   pages?: Prisma.StoryPageListRelationFilter
@@ -199,11 +241,12 @@ export type StoryWhereInput = {
 
 export type StoryOrderByWithRelationInput = {
   id?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
   published?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  coverImageId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  coverImageId?: Prisma.SortOrderInput | Prisma.SortOrder
   coverImage?: Prisma.ImageOrderByWithRelationInput
   translations?: Prisma.StoryTranslationOrderByRelationAggregateInput
   pages?: Prisma.StoryPageOrderByRelationAggregateInput
@@ -216,11 +259,12 @@ export type StoryWhereUniqueInput = Prisma.AtLeast<{
   AND?: Prisma.StoryWhereInput | Prisma.StoryWhereInput[]
   OR?: Prisma.StoryWhereInput[]
   NOT?: Prisma.StoryWhereInput | Prisma.StoryWhereInput[]
+  viewCount?: Prisma.IntFilter<"Story"> | number
   published?: Prisma.BoolFilter<"Story"> | boolean
   publishedAt?: Prisma.DateTimeNullableFilter<"Story"> | Date | string | null
-  coverImageId?: Prisma.StringNullableFilter<"Story"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Story"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Story"> | Date | string
+  coverImageId?: Prisma.StringNullableFilter<"Story"> | string | null
   coverImage?: Prisma.XOR<Prisma.ImageNullableScalarRelationFilter, Prisma.ImageWhereInput> | null
   translations?: Prisma.StoryTranslationListRelationFilter
   pages?: Prisma.StoryPageListRelationFilter
@@ -230,14 +274,17 @@ export type StoryWhereUniqueInput = Prisma.AtLeast<{
 
 export type StoryOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
   published?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrderInput | Prisma.SortOrder
-  coverImageId?: Prisma.SortOrderInput | Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  coverImageId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.StoryCountOrderByAggregateInput
+  _avg?: Prisma.StoryAvgOrderByAggregateInput
   _max?: Prisma.StoryMaxOrderByAggregateInput
   _min?: Prisma.StoryMinOrderByAggregateInput
+  _sum?: Prisma.StorySumOrderByAggregateInput
 }
 
 export type StoryScalarWhereWithAggregatesInput = {
@@ -245,15 +292,17 @@ export type StoryScalarWhereWithAggregatesInput = {
   OR?: Prisma.StoryScalarWhereWithAggregatesInput[]
   NOT?: Prisma.StoryScalarWhereWithAggregatesInput | Prisma.StoryScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"Story"> | string
+  viewCount?: Prisma.IntWithAggregatesFilter<"Story"> | number
   published?: Prisma.BoolWithAggregatesFilter<"Story"> | boolean
   publishedAt?: Prisma.DateTimeNullableWithAggregatesFilter<"Story"> | Date | string | null
-  coverImageId?: Prisma.StringNullableWithAggregatesFilter<"Story"> | string | null
   createdAt?: Prisma.DateTimeWithAggregatesFilter<"Story"> | Date | string
   updatedAt?: Prisma.DateTimeWithAggregatesFilter<"Story"> | Date | string
+  coverImageId?: Prisma.StringNullableWithAggregatesFilter<"Story"> | string | null
 }
 
 export type StoryCreateInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
   createdAt?: Date | string
@@ -267,11 +316,12 @@ export type StoryCreateInput = {
 
 export type StoryUncheckedCreateInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
-  coverImageId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  coverImageId?: string | null
   translations?: Prisma.StoryTranslationUncheckedCreateNestedManyWithoutStoryInput
   pages?: Prisma.StoryPageUncheckedCreateNestedManyWithoutStoryInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutStoryInput
@@ -280,6 +330,7 @@ export type StoryUncheckedCreateInput = {
 
 export type StoryUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -293,11 +344,12 @@ export type StoryUpdateInput = {
 
 export type StoryUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  coverImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   translations?: Prisma.StoryTranslationUncheckedUpdateManyWithoutStoryNestedInput
   pages?: Prisma.StoryPageUncheckedUpdateManyWithoutStoryNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutStoryNestedInput
@@ -306,15 +358,17 @@ export type StoryUncheckedUpdateInput = {
 
 export type StoryCreateManyInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
-  coverImageId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  coverImageId?: string | null
 }
 
 export type StoryUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -323,38 +377,50 @@ export type StoryUpdateManyMutationInput = {
 
 export type StoryUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  coverImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type StoryCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
   published?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
-  coverImageId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  coverImageId?: Prisma.SortOrder
+}
+
+export type StoryAvgOrderByAggregateInput = {
+  viewCount?: Prisma.SortOrder
 }
 
 export type StoryMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
   published?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
-  coverImageId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  coverImageId?: Prisma.SortOrder
 }
 
 export type StoryMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
+  viewCount?: Prisma.SortOrder
   published?: Prisma.SortOrder
   publishedAt?: Prisma.SortOrder
-  coverImageId?: Prisma.SortOrder
   createdAt?: Prisma.SortOrder
   updatedAt?: Prisma.SortOrder
+  coverImageId?: Prisma.SortOrder
+}
+
+export type StorySumOrderByAggregateInput = {
+  viewCount?: Prisma.SortOrder
 }
 
 export type StoryScalarRelationFilter = {
@@ -370,6 +436,14 @@ export type StoryListRelationFilter = {
 
 export type StoryOrderByRelationAggregateInput = {
   _count?: Prisma.SortOrder
+}
+
+export type IntFieldUpdateOperationsInput = {
+  set?: number
+  increment?: number
+  decrement?: number
+  multiply?: number
+  divide?: number
 }
 
 export type StoryCreateNestedOneWithoutTranslationsInput = {
@@ -472,6 +546,7 @@ export type StoryUpdateOneRequiredWithoutLikesNestedInput = {
 
 export type StoryCreateWithoutTranslationsInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
   createdAt?: Date | string
@@ -484,11 +559,12 @@ export type StoryCreateWithoutTranslationsInput = {
 
 export type StoryUncheckedCreateWithoutTranslationsInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
-  coverImageId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  coverImageId?: string | null
   pages?: Prisma.StoryPageUncheckedCreateNestedManyWithoutStoryInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutStoryInput
   likes?: Prisma.StoryLikeUncheckedCreateNestedManyWithoutStoryInput
@@ -512,6 +588,7 @@ export type StoryUpdateToOneWithWhereWithoutTranslationsInput = {
 
 export type StoryUpdateWithoutTranslationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -524,11 +601,12 @@ export type StoryUpdateWithoutTranslationsInput = {
 
 export type StoryUncheckedUpdateWithoutTranslationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  coverImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   pages?: Prisma.StoryPageUncheckedUpdateManyWithoutStoryNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutStoryNestedInput
   likes?: Prisma.StoryLikeUncheckedUpdateManyWithoutStoryNestedInput
@@ -536,6 +614,7 @@ export type StoryUncheckedUpdateWithoutTranslationsInput = {
 
 export type StoryCreateWithoutPagesInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
   createdAt?: Date | string
@@ -548,11 +627,12 @@ export type StoryCreateWithoutPagesInput = {
 
 export type StoryUncheckedCreateWithoutPagesInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
-  coverImageId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  coverImageId?: string | null
   translations?: Prisma.StoryTranslationUncheckedCreateNestedManyWithoutStoryInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutStoryInput
   likes?: Prisma.StoryLikeUncheckedCreateNestedManyWithoutStoryInput
@@ -576,6 +656,7 @@ export type StoryUpdateToOneWithWhereWithoutPagesInput = {
 
 export type StoryUpdateWithoutPagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -588,11 +669,12 @@ export type StoryUpdateWithoutPagesInput = {
 
 export type StoryUncheckedUpdateWithoutPagesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  coverImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   translations?: Prisma.StoryTranslationUncheckedUpdateManyWithoutStoryNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutStoryNestedInput
   likes?: Prisma.StoryLikeUncheckedUpdateManyWithoutStoryNestedInput
@@ -600,6 +682,7 @@ export type StoryUncheckedUpdateWithoutPagesInput = {
 
 export type StoryCreateWithoutCoverImageInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
   createdAt?: Date | string
@@ -612,6 +695,7 @@ export type StoryCreateWithoutCoverImageInput = {
 
 export type StoryUncheckedCreateWithoutCoverImageInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
   createdAt?: Date | string
@@ -653,15 +737,17 @@ export type StoryScalarWhereInput = {
   OR?: Prisma.StoryScalarWhereInput[]
   NOT?: Prisma.StoryScalarWhereInput | Prisma.StoryScalarWhereInput[]
   id?: Prisma.StringFilter<"Story"> | string
+  viewCount?: Prisma.IntFilter<"Story"> | number
   published?: Prisma.BoolFilter<"Story"> | boolean
   publishedAt?: Prisma.DateTimeNullableFilter<"Story"> | Date | string | null
-  coverImageId?: Prisma.StringNullableFilter<"Story"> | string | null
   createdAt?: Prisma.DateTimeFilter<"Story"> | Date | string
   updatedAt?: Prisma.DateTimeFilter<"Story"> | Date | string
+  coverImageId?: Prisma.StringNullableFilter<"Story"> | string | null
 }
 
 export type StoryCreateWithoutCommentsInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
   createdAt?: Date | string
@@ -674,11 +760,12 @@ export type StoryCreateWithoutCommentsInput = {
 
 export type StoryUncheckedCreateWithoutCommentsInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
-  coverImageId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  coverImageId?: string | null
   translations?: Prisma.StoryTranslationUncheckedCreateNestedManyWithoutStoryInput
   pages?: Prisma.StoryPageUncheckedCreateNestedManyWithoutStoryInput
   likes?: Prisma.StoryLikeUncheckedCreateNestedManyWithoutStoryInput
@@ -702,6 +789,7 @@ export type StoryUpdateToOneWithWhereWithoutCommentsInput = {
 
 export type StoryUpdateWithoutCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -714,11 +802,12 @@ export type StoryUpdateWithoutCommentsInput = {
 
 export type StoryUncheckedUpdateWithoutCommentsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  coverImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   translations?: Prisma.StoryTranslationUncheckedUpdateManyWithoutStoryNestedInput
   pages?: Prisma.StoryPageUncheckedUpdateManyWithoutStoryNestedInput
   likes?: Prisma.StoryLikeUncheckedUpdateManyWithoutStoryNestedInput
@@ -726,6 +815,7 @@ export type StoryUncheckedUpdateWithoutCommentsInput = {
 
 export type StoryCreateWithoutLikesInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
   createdAt?: Date | string
@@ -738,11 +828,12 @@ export type StoryCreateWithoutLikesInput = {
 
 export type StoryUncheckedCreateWithoutLikesInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
-  coverImageId?: string | null
   createdAt?: Date | string
   updatedAt?: Date | string
+  coverImageId?: string | null
   translations?: Prisma.StoryTranslationUncheckedCreateNestedManyWithoutStoryInput
   pages?: Prisma.StoryPageUncheckedCreateNestedManyWithoutStoryInput
   comments?: Prisma.CommentUncheckedCreateNestedManyWithoutStoryInput
@@ -766,6 +857,7 @@ export type StoryUpdateToOneWithWhereWithoutLikesInput = {
 
 export type StoryUpdateWithoutLikesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -778,11 +870,12 @@ export type StoryUpdateWithoutLikesInput = {
 
 export type StoryUncheckedUpdateWithoutLikesInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  coverImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
   updatedAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
+  coverImageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   translations?: Prisma.StoryTranslationUncheckedUpdateManyWithoutStoryNestedInput
   pages?: Prisma.StoryPageUncheckedUpdateManyWithoutStoryNestedInput
   comments?: Prisma.CommentUncheckedUpdateManyWithoutStoryNestedInput
@@ -790,6 +883,7 @@ export type StoryUncheckedUpdateWithoutLikesInput = {
 
 export type StoryCreateManyCoverImageInput = {
   id?: string
+  viewCount?: number
   published?: boolean
   publishedAt?: Date | string | null
   createdAt?: Date | string
@@ -798,6 +892,7 @@ export type StoryCreateManyCoverImageInput = {
 
 export type StoryUpdateWithoutCoverImageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -810,6 +905,7 @@ export type StoryUpdateWithoutCoverImageInput = {
 
 export type StoryUncheckedUpdateWithoutCoverImageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -822,6 +918,7 @@ export type StoryUncheckedUpdateWithoutCoverImageInput = {
 
 export type StoryUncheckedUpdateManyWithoutCoverImageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  viewCount?: Prisma.IntFieldUpdateOperationsInput | number
   published?: Prisma.BoolFieldUpdateOperationsInput | boolean
   publishedAt?: Prisma.NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   createdAt?: Prisma.DateTimeFieldUpdateOperationsInput | Date | string
@@ -888,11 +985,12 @@ export type StoryCountOutputTypeCountLikesArgs<ExtArgs extends runtime.Types.Ext
 
 export type StorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  viewCount?: boolean
   published?: boolean
   publishedAt?: boolean
-  coverImageId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  coverImageId?: boolean
   coverImage?: boolean | Prisma.Story$coverImageArgs<ExtArgs>
   translations?: boolean | Prisma.Story$translationsArgs<ExtArgs>
   pages?: boolean | Prisma.Story$pagesArgs<ExtArgs>
@@ -903,34 +1001,37 @@ export type StorySelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = 
 
 export type StorySelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  viewCount?: boolean
   published?: boolean
   publishedAt?: boolean
-  coverImageId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  coverImageId?: boolean
   coverImage?: boolean | Prisma.Story$coverImageArgs<ExtArgs>
 }, ExtArgs["result"]["story"]>
 
 export type StorySelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
+  viewCount?: boolean
   published?: boolean
   publishedAt?: boolean
-  coverImageId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  coverImageId?: boolean
   coverImage?: boolean | Prisma.Story$coverImageArgs<ExtArgs>
 }, ExtArgs["result"]["story"]>
 
 export type StorySelectScalar = {
   id?: boolean
+  viewCount?: boolean
   published?: boolean
   publishedAt?: boolean
-  coverImageId?: boolean
   createdAt?: boolean
   updatedAt?: boolean
+  coverImageId?: boolean
 }
 
-export type StoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "published" | "publishedAt" | "coverImageId" | "createdAt" | "updatedAt", ExtArgs["result"]["story"]>
+export type StoryOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "viewCount" | "published" | "publishedAt" | "createdAt" | "updatedAt" | "coverImageId", ExtArgs["result"]["story"]>
 export type StoryInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   coverImage?: boolean | Prisma.Story$coverImageArgs<ExtArgs>
   translations?: boolean | Prisma.Story$translationsArgs<ExtArgs>
@@ -957,11 +1058,12 @@ export type $StoryPayload<ExtArgs extends runtime.Types.Extensions.InternalArgs 
   }
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
+    viewCount: number
     published: boolean
     publishedAt: Date | null
-    coverImageId: string | null
     createdAt: Date
     updatedAt: Date
+    coverImageId: string | null
   }, ExtArgs["result"]["story"]>
   composites: {}
 }
@@ -1391,11 +1493,12 @@ export interface Prisma__StoryClient<T, Null = never, ExtArgs extends runtime.Ty
  */
 export interface StoryFieldRefs {
   readonly id: Prisma.FieldRef<"Story", 'String'>
+  readonly viewCount: Prisma.FieldRef<"Story", 'Int'>
   readonly published: Prisma.FieldRef<"Story", 'Boolean'>
   readonly publishedAt: Prisma.FieldRef<"Story", 'DateTime'>
-  readonly coverImageId: Prisma.FieldRef<"Story", 'String'>
   readonly createdAt: Prisma.FieldRef<"Story", 'DateTime'>
   readonly updatedAt: Prisma.FieldRef<"Story", 'DateTime'>
+  readonly coverImageId: Prisma.FieldRef<"Story", 'String'>
 }
     
 

@@ -1329,11 +1329,12 @@ export type VerificationScalarFieldEnum = (typeof VerificationScalarFieldEnum)[k
 
 export const StoryScalarFieldEnum = {
   id: 'id',
+  viewCount: 'viewCount',
   published: 'published',
   publishedAt: 'publishedAt',
-  coverImageId: 'coverImageId',
   createdAt: 'createdAt',
-  updatedAt: 'updatedAt'
+  updatedAt: 'updatedAt',
+  coverImageId: 'coverImageId'
 } as const
 
 export type StoryScalarFieldEnum = (typeof StoryScalarFieldEnum)[keyof typeof StoryScalarFieldEnum]
@@ -1354,6 +1355,7 @@ export type StoryTranslationScalarFieldEnum = (typeof StoryTranslationScalarFiel
 export const StoryPageScalarFieldEnum = {
   id: 'id',
   storyId: 'storyId',
+  title: 'title',
   sortOrder: 'sortOrder',
   imageId: 'imageId'
 } as const

@@ -37,6 +37,7 @@ export type StoryPageSumAggregateOutputType = {
 export type StoryPageMinAggregateOutputType = {
   id: string | null
   storyId: string | null
+  title: string | null
   sortOrder: number | null
   imageId: string | null
 }
@@ -44,6 +45,7 @@ export type StoryPageMinAggregateOutputType = {
 export type StoryPageMaxAggregateOutputType = {
   id: string | null
   storyId: string | null
+  title: string | null
   sortOrder: number | null
   imageId: string | null
 }
@@ -51,6 +53,7 @@ export type StoryPageMaxAggregateOutputType = {
 export type StoryPageCountAggregateOutputType = {
   id: number
   storyId: number
+  title: number
   sortOrder: number
   imageId: number
   _all: number
@@ -68,6 +71,7 @@ export type StoryPageSumAggregateInputType = {
 export type StoryPageMinAggregateInputType = {
   id?: true
   storyId?: true
+  title?: true
   sortOrder?: true
   imageId?: true
 }
@@ -75,6 +79,7 @@ export type StoryPageMinAggregateInputType = {
 export type StoryPageMaxAggregateInputType = {
   id?: true
   storyId?: true
+  title?: true
   sortOrder?: true
   imageId?: true
 }
@@ -82,6 +87,7 @@ export type StoryPageMaxAggregateInputType = {
 export type StoryPageCountAggregateInputType = {
   id?: true
   storyId?: true
+  title?: true
   sortOrder?: true
   imageId?: true
   _all?: true
@@ -176,6 +182,7 @@ export type StoryPageGroupByArgs<ExtArgs extends runtime.Types.Extensions.Intern
 export type StoryPageGroupByOutputType = {
   id: string
   storyId: string
+  title: string | null
   sortOrder: number
   imageId: string | null
   _count: StoryPageCountAggregateOutputType | null
@@ -206,6 +213,7 @@ export type StoryPageWhereInput = {
   NOT?: Prisma.StoryPageWhereInput | Prisma.StoryPageWhereInput[]
   id?: Prisma.StringFilter<"StoryPage"> | string
   storyId?: Prisma.StringFilter<"StoryPage"> | string
+  title?: Prisma.StringNullableFilter<"StoryPage"> | string | null
   sortOrder?: Prisma.IntFilter<"StoryPage"> | number
   imageId?: Prisma.StringNullableFilter<"StoryPage"> | string | null
   story?: Prisma.XOR<Prisma.StoryScalarRelationFilter, Prisma.StoryWhereInput>
@@ -216,6 +224,7 @@ export type StoryPageWhereInput = {
 export type StoryPageOrderByWithRelationInput = {
   id?: Prisma.SortOrder
   storyId?: Prisma.SortOrder
+  title?: Prisma.SortOrderInput | Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   imageId?: Prisma.SortOrderInput | Prisma.SortOrder
   story?: Prisma.StoryOrderByWithRelationInput
@@ -230,6 +239,7 @@ export type StoryPageWhereUniqueInput = Prisma.AtLeast<{
   OR?: Prisma.StoryPageWhereInput[]
   NOT?: Prisma.StoryPageWhereInput | Prisma.StoryPageWhereInput[]
   storyId?: Prisma.StringFilter<"StoryPage"> | string
+  title?: Prisma.StringNullableFilter<"StoryPage"> | string | null
   sortOrder?: Prisma.IntFilter<"StoryPage"> | number
   imageId?: Prisma.StringNullableFilter<"StoryPage"> | string | null
   story?: Prisma.XOR<Prisma.StoryScalarRelationFilter, Prisma.StoryWhereInput>
@@ -240,6 +250,7 @@ export type StoryPageWhereUniqueInput = Prisma.AtLeast<{
 export type StoryPageOrderByWithAggregationInput = {
   id?: Prisma.SortOrder
   storyId?: Prisma.SortOrder
+  title?: Prisma.SortOrderInput | Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   imageId?: Prisma.SortOrderInput | Prisma.SortOrder
   _count?: Prisma.StoryPageCountOrderByAggregateInput
@@ -255,12 +266,14 @@ export type StoryPageScalarWhereWithAggregatesInput = {
   NOT?: Prisma.StoryPageScalarWhereWithAggregatesInput | Prisma.StoryPageScalarWhereWithAggregatesInput[]
   id?: Prisma.StringWithAggregatesFilter<"StoryPage"> | string
   storyId?: Prisma.StringWithAggregatesFilter<"StoryPage"> | string
+  title?: Prisma.StringNullableWithAggregatesFilter<"StoryPage"> | string | null
   sortOrder?: Prisma.IntWithAggregatesFilter<"StoryPage"> | number
   imageId?: Prisma.StringNullableWithAggregatesFilter<"StoryPage"> | string | null
 }
 
 export type StoryPageCreateInput = {
   id?: string
+  title?: string | null
   sortOrder: number
   story: Prisma.StoryCreateNestedOneWithoutPagesInput
   image?: Prisma.ImageCreateNestedOneWithoutPageImagesInput
@@ -270,6 +283,7 @@ export type StoryPageCreateInput = {
 export type StoryPageUncheckedCreateInput = {
   id?: string
   storyId: string
+  title?: string | null
   sortOrder: number
   imageId?: string | null
   translations?: Prisma.StoryPageTranslationUncheckedCreateNestedManyWithoutPageInput
@@ -277,6 +291,7 @@ export type StoryPageUncheckedCreateInput = {
 
 export type StoryPageUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   story?: Prisma.StoryUpdateOneRequiredWithoutPagesNestedInput
   image?: Prisma.ImageUpdateOneWithoutPageImagesNestedInput
@@ -286,6 +301,7 @@ export type StoryPageUpdateInput = {
 export type StoryPageUncheckedUpdateInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   storyId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   imageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   translations?: Prisma.StoryPageTranslationUncheckedUpdateManyWithoutPageNestedInput
@@ -294,18 +310,21 @@ export type StoryPageUncheckedUpdateInput = {
 export type StoryPageCreateManyInput = {
   id?: string
   storyId: string
+  title?: string | null
   sortOrder: number
   imageId?: string | null
 }
 
 export type StoryPageUpdateManyMutationInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
 export type StoryPageUncheckedUpdateManyInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   storyId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   imageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -328,6 +347,7 @@ export type StoryPageStoryIdSortOrderCompoundUniqueInput = {
 export type StoryPageCountOrderByAggregateInput = {
   id?: Prisma.SortOrder
   storyId?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   imageId?: Prisma.SortOrder
 }
@@ -339,6 +359,7 @@ export type StoryPageAvgOrderByAggregateInput = {
 export type StoryPageMaxOrderByAggregateInput = {
   id?: Prisma.SortOrder
   storyId?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   imageId?: Prisma.SortOrder
 }
@@ -346,6 +367,7 @@ export type StoryPageMaxOrderByAggregateInput = {
 export type StoryPageMinOrderByAggregateInput = {
   id?: Prisma.SortOrder
   storyId?: Prisma.SortOrder
+  title?: Prisma.SortOrder
   sortOrder?: Prisma.SortOrder
   imageId?: Prisma.SortOrder
 }
@@ -399,14 +421,6 @@ export type StoryPageUncheckedUpdateManyWithoutStoryNestedInput = {
   update?: Prisma.StoryPageUpdateWithWhereUniqueWithoutStoryInput | Prisma.StoryPageUpdateWithWhereUniqueWithoutStoryInput[]
   updateMany?: Prisma.StoryPageUpdateManyWithWhereWithoutStoryInput | Prisma.StoryPageUpdateManyWithWhereWithoutStoryInput[]
   deleteMany?: Prisma.StoryPageScalarWhereInput | Prisma.StoryPageScalarWhereInput[]
-}
-
-export type IntFieldUpdateOperationsInput = {
-  set?: number
-  increment?: number
-  decrement?: number
-  multiply?: number
-  divide?: number
 }
 
 export type StoryPageCreateNestedOneWithoutTranslationsInput = {
@@ -467,6 +481,7 @@ export type StoryPageUncheckedUpdateManyWithoutImageNestedInput = {
 
 export type StoryPageCreateWithoutStoryInput = {
   id?: string
+  title?: string | null
   sortOrder: number
   image?: Prisma.ImageCreateNestedOneWithoutPageImagesInput
   translations?: Prisma.StoryPageTranslationCreateNestedManyWithoutPageInput
@@ -474,6 +489,7 @@ export type StoryPageCreateWithoutStoryInput = {
 
 export type StoryPageUncheckedCreateWithoutStoryInput = {
   id?: string
+  title?: string | null
   sortOrder: number
   imageId?: string | null
   translations?: Prisma.StoryPageTranslationUncheckedCreateNestedManyWithoutPageInput
@@ -511,12 +527,14 @@ export type StoryPageScalarWhereInput = {
   NOT?: Prisma.StoryPageScalarWhereInput | Prisma.StoryPageScalarWhereInput[]
   id?: Prisma.StringFilter<"StoryPage"> | string
   storyId?: Prisma.StringFilter<"StoryPage"> | string
+  title?: Prisma.StringNullableFilter<"StoryPage"> | string | null
   sortOrder?: Prisma.IntFilter<"StoryPage"> | number
   imageId?: Prisma.StringNullableFilter<"StoryPage"> | string | null
 }
 
 export type StoryPageCreateWithoutTranslationsInput = {
   id?: string
+  title?: string | null
   sortOrder: number
   story: Prisma.StoryCreateNestedOneWithoutPagesInput
   image?: Prisma.ImageCreateNestedOneWithoutPageImagesInput
@@ -525,6 +543,7 @@ export type StoryPageCreateWithoutTranslationsInput = {
 export type StoryPageUncheckedCreateWithoutTranslationsInput = {
   id?: string
   storyId: string
+  title?: string | null
   sortOrder: number
   imageId?: string | null
 }
@@ -547,6 +566,7 @@ export type StoryPageUpdateToOneWithWhereWithoutTranslationsInput = {
 
 export type StoryPageUpdateWithoutTranslationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   story?: Prisma.StoryUpdateOneRequiredWithoutPagesNestedInput
   image?: Prisma.ImageUpdateOneWithoutPageImagesNestedInput
@@ -555,12 +575,14 @@ export type StoryPageUpdateWithoutTranslationsInput = {
 export type StoryPageUncheckedUpdateWithoutTranslationsInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   storyId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   imageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
 
 export type StoryPageCreateWithoutImageInput = {
   id?: string
+  title?: string | null
   sortOrder: number
   story: Prisma.StoryCreateNestedOneWithoutPagesInput
   translations?: Prisma.StoryPageTranslationCreateNestedManyWithoutPageInput
@@ -569,6 +591,7 @@ export type StoryPageCreateWithoutImageInput = {
 export type StoryPageUncheckedCreateWithoutImageInput = {
   id?: string
   storyId: string
+  title?: string | null
   sortOrder: number
   translations?: Prisma.StoryPageTranslationUncheckedCreateNestedManyWithoutPageInput
 }
@@ -601,12 +624,14 @@ export type StoryPageUpdateManyWithWhereWithoutImageInput = {
 
 export type StoryPageCreateManyStoryInput = {
   id?: string
+  title?: string | null
   sortOrder: number
   imageId?: string | null
 }
 
 export type StoryPageUpdateWithoutStoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   image?: Prisma.ImageUpdateOneWithoutPageImagesNestedInput
   translations?: Prisma.StoryPageTranslationUpdateManyWithoutPageNestedInput
@@ -614,6 +639,7 @@ export type StoryPageUpdateWithoutStoryInput = {
 
 export type StoryPageUncheckedUpdateWithoutStoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   imageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   translations?: Prisma.StoryPageTranslationUncheckedUpdateManyWithoutPageNestedInput
@@ -621,6 +647,7 @@ export type StoryPageUncheckedUpdateWithoutStoryInput = {
 
 export type StoryPageUncheckedUpdateManyWithoutStoryInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   imageId?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
 }
@@ -628,11 +655,13 @@ export type StoryPageUncheckedUpdateManyWithoutStoryInput = {
 export type StoryPageCreateManyImageInput = {
   id?: string
   storyId: string
+  title?: string | null
   sortOrder: number
 }
 
 export type StoryPageUpdateWithoutImageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   story?: Prisma.StoryUpdateOneRequiredWithoutPagesNestedInput
   translations?: Prisma.StoryPageTranslationUpdateManyWithoutPageNestedInput
@@ -641,6 +670,7 @@ export type StoryPageUpdateWithoutImageInput = {
 export type StoryPageUncheckedUpdateWithoutImageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   storyId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
   translations?: Prisma.StoryPageTranslationUncheckedUpdateManyWithoutPageNestedInput
 }
@@ -648,6 +678,7 @@ export type StoryPageUncheckedUpdateWithoutImageInput = {
 export type StoryPageUncheckedUpdateManyWithoutImageInput = {
   id?: Prisma.StringFieldUpdateOperationsInput | string
   storyId?: Prisma.StringFieldUpdateOperationsInput | string
+  title?: Prisma.NullableStringFieldUpdateOperationsInput | string | null
   sortOrder?: Prisma.IntFieldUpdateOperationsInput | number
 }
 
@@ -685,6 +716,7 @@ export type StoryPageCountOutputTypeCountTranslationsArgs<ExtArgs extends runtim
 export type StoryPageSelect<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   storyId?: boolean
+  title?: boolean
   sortOrder?: boolean
   imageId?: boolean
   story?: boolean | Prisma.StoryDefaultArgs<ExtArgs>
@@ -696,6 +728,7 @@ export type StoryPageSelect<ExtArgs extends runtime.Types.Extensions.InternalArg
 export type StoryPageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   storyId?: boolean
+  title?: boolean
   sortOrder?: boolean
   imageId?: boolean
   story?: boolean | Prisma.StoryDefaultArgs<ExtArgs>
@@ -705,6 +738,7 @@ export type StoryPageSelectCreateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type StoryPageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetSelect<{
   id?: boolean
   storyId?: boolean
+  title?: boolean
   sortOrder?: boolean
   imageId?: boolean
   story?: boolean | Prisma.StoryDefaultArgs<ExtArgs>
@@ -714,11 +748,12 @@ export type StoryPageSelectUpdateManyAndReturn<ExtArgs extends runtime.Types.Ext
 export type StoryPageSelectScalar = {
   id?: boolean
   storyId?: boolean
+  title?: boolean
   sortOrder?: boolean
   imageId?: boolean
 }
 
-export type StoryPageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "storyId" | "sortOrder" | "imageId", ExtArgs["result"]["storyPage"]>
+export type StoryPageOmit<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = runtime.Types.Extensions.GetOmit<"id" | "storyId" | "title" | "sortOrder" | "imageId", ExtArgs["result"]["storyPage"]>
 export type StoryPageInclude<ExtArgs extends runtime.Types.Extensions.InternalArgs = runtime.Types.Extensions.DefaultArgs> = {
   story?: boolean | Prisma.StoryDefaultArgs<ExtArgs>
   image?: boolean | Prisma.StoryPage$imageArgs<ExtArgs>
@@ -744,6 +779,7 @@ export type $StoryPagePayload<ExtArgs extends runtime.Types.Extensions.InternalA
   scalars: runtime.Types.Extensions.GetPayloadResult<{
     id: string
     storyId: string
+    title: string | null
     sortOrder: number
     imageId: string | null
   }, ExtArgs["result"]["storyPage"]>
@@ -1174,6 +1210,7 @@ export interface Prisma__StoryPageClient<T, Null = never, ExtArgs extends runtim
 export interface StoryPageFieldRefs {
   readonly id: Prisma.FieldRef<"StoryPage", 'String'>
   readonly storyId: Prisma.FieldRef<"StoryPage", 'String'>
+  readonly title: Prisma.FieldRef<"StoryPage", 'String'>
   readonly sortOrder: Prisma.FieldRef<"StoryPage", 'Int'>
   readonly imageId: Prisma.FieldRef<"StoryPage", 'String'>
 }
