@@ -18,17 +18,6 @@ type Props = {
   onChange: (imageId: string) => void;
 };
 
-// Это компонент Для формы создания сказки
-// В форме сказки будет что-то вроде:
-
-// <MediaPickerDialog
-//   images={images}
-//   value={form.watch("coverImageId")}
-//   onChange={(imageId) =>
-//     form.setValue("coverImageId", imageId)
-//   }
-// />
-
 export default function MediaPickerDialog({ images, value, onChange }: Props) {
   const [open, setOpen] = useState(false);
 

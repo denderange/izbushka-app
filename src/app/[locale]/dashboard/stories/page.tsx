@@ -1,3 +1,9 @@
+import { Link } from "@/i18n/navigation";
+
 export default function StoriesPage() {
-  return <div>Blog</div>;
+  return (
+    <div>
+      <Link href="/dashboard/stories/create">Создать новую историю</Link>
+    </div>
+  );
 }

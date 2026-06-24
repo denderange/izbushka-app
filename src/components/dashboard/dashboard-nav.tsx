@@ -13,8 +13,8 @@ const links = [
     label: "Users",
   },
   {
-    href: "/dashboard/blog",
-    label: "Blog",
+    href: "/dashboard/stories",
+    label: "Stories",
   },
   {
     href: "/dashboard/media",

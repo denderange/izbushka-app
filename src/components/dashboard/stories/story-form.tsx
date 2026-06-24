@@ -22,6 +22,7 @@ import {
 import { Input } from "@/components/ui/input";
 import { Switch } from "@/components/ui/switch";
 import { Textarea } from "@/components/ui/textarea";
+import ImageSelector from "@/components/media/image-selector";
 
 type Props = {
   images: TImage[];
@@ -85,7 +86,7 @@ export default function StoryForm({ images }: Props) {
             <Field>
               <FieldLabel>Cover image</FieldLabel>
 
-              <MediaPickerDialog
+              <ImageSelector
                 images={images}
                 value={field.value}
                 onChange={field.onChange}
