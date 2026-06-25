@@ -11,6 +11,7 @@ import {
 } from "@/components/ui/sheet";
 import { Link, usePathname } from "@/i18n/navigation";
 import { LocaleSwitcher } from "./locale-switcher";
+import { ThemeToggle } from "./theme-toggle";
 import { NAV_LINKS } from "@/lib/constants/nav";
 
 export function MobileNav() {
@@ -46,7 +47,8 @@ export function MobileNav() {
             </Button>
           ))}
 
-          <div className="my-4">
+          <div className="my-4 flex items-center gap-2">
+            <ThemeToggle />
             <LocaleSwitcher />
           </div>
 

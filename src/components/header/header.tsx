@@ -4,6 +4,7 @@ import { NAV_LINKS } from "@/lib/constants/nav";
 import { Logo } from "./logo";
 import { MobileNav } from "./mobile-nav";
 import { LocaleSwitcher } from "./locale-switcher";
+import { ThemeToggle } from "./theme-toggle";
 import { HeaderShell } from "./header-shell";
 import { AuthButton } from "../auth/auth-button";
 
@@ -25,8 +26,8 @@ export async function Header() {
         </div>
 
         <div className="hidden md:flex items-center gap-2">
+          <ThemeToggle />
           <LocaleSwitcher />
-
           <AuthButton />
         </div>
 

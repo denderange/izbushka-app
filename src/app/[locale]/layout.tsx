@@ -9,6 +9,7 @@ import { Footer } from "@/components/footer/footer";
 import { Container } from "@/components/layout/container";
 import { Header } from "@/components/header/header";
 import { Toaster } from "@/components/ui/sonner";
+import { ThemeProvider } from "@/components/theme-provider";
 import { ImageKitProvider } from "@imagekit/next";
 
 const inter = Inter({ subsets: ["latin"], variable: "--font-sans" });
@@ -40,7 +41,7 @@ export default async function RootLayout({ children, params }: Props) {
   }
 
   return (
-    <html lang={locale}>
+    <html lang={locale} suppressHydrationWarning>
       <body
         className={cn(
           "min-h-screen flex flex-col",
@@ -49,20 +50,25 @@ export default async function RootLayout({ children, params }: Props) {
           geistSans.variable,
           geistMono.variable,
           inter.variable,
-        )}
-      >
-        <NextIntlClientProvider>
-          <ImageKitProvider
-            urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}
-          >
-            <Header />
-            <main className="flex-1">
-              <Container>{children}</Container>
-            </main>
-            <Footer />
-            <Toaster position="top-center" />
-          </ImageKitProvider>
-        </NextIntlClientProvider>
+        )}>
+        <ThemeProvider
+          attribute="class"
+          defaultTheme="light"
+          enableSystem
+          enableColorScheme
+          disableTransitionOnChange>
+          <NextIntlClientProvider>
+            <ImageKitProvider
+              urlEndpoint={process.env.NEXT_PUBLIC_IMAGEKIT_URL_ENDPOINT!}>
+              <Header />
+              <main className="flex-1">
+                <Container>{children}</Container>
+              </main>
+              <Footer />
+              <Toaster position="top-center" />
+            </ImageKitProvider>
+          </NextIntlClientProvider>
+        </ThemeProvider>
       </body>
     </html>
   );

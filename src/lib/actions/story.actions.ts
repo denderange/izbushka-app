@@ -5,6 +5,23 @@ import prisma from "@/lib/prisma";
 
 import { CreateStorySchema, TCreateStoryInput } from "@/lib/validation/story";
 
+export async function getStories() {
+  return prisma.story.findMany({
+    orderBy: {
+      createdAt: "desc",
+    },
+    include: {
+      translations: true,
+      coverImage: true,
+      _count: {
+        select: {
+          pages: true,
+        },
+      },
+    },
+  });
+}
+
 export async function createStory(data: TCreateStoryInput) {
   const validated = CreateStorySchema.parse(data);
 
