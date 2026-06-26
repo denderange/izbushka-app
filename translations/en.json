@@ -42,5 +42,18 @@
     "messageMax": "Message must not exceed 500 characters.",
     "contactRequired": "Please provide a way to contact you.",
     "contactMax": "Maximum 150 characters."
+  },
+  "SignUpPage": {
+    "SignUpMeta": "Create account",
+    "SignUpPageDescription": "Sign up with your Google account to access Izbushka.",
+    "title": "Create account",
+    "description": "Continue with your Google account.",
+    "continueWithGoogle": "Continue with Google",
+    "loading": "Signing in...",
+    "alreadyHaveAccount": "Already have an account?",
+    "signIn": "Sign in",
+    "termsNotice": "By continuing, you agree to our",
+    "and": "and",
+    "errorGeneric": "Something went wrong. Please try again."
   }
 }

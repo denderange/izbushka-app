@@ -26,11 +26,8 @@ export default function MediaDialog({
   if (!image) return null;
 
   return (
-    <Dialog
-      open={open}
-      onOpenChange={onOpenChange}
-    >
-      <DialogContent className="max-w-4xl">
+    <Dialog open={open} onOpenChange={onOpenChange}>
+      <DialogContent className="max-w-4xl" aria-describedby={undefined}>
         <DialogHeader>
           <DialogTitle>{image.name}</DialogTitle>
         </DialogHeader>
@@ -58,8 +55,7 @@ export default function MediaDialog({
             onClick={() => {
               onSelect(image);
               onOpenChange(false);
-            }}
-          >
+            }}>
             Select image
           </Button>
         )}

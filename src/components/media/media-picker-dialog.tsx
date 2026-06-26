@@ -35,20 +35,14 @@ export default function MediaPickerDialog({ images, value, onChange }: Props) {
         />
       )}
 
-      <Dialog
-        open={open}
-        onOpenChange={setOpen}
-      >
+      <Dialog open={open} onOpenChange={setOpen}>
         <DialogTrigger asChild>
-          <Button
-            type="button"
-            variant="outline"
-          >
+          <Button type="button" variant="outline">
             Select cover image
           </Button>
         </DialogTrigger>
 
-        <DialogContent className="max-w-6xl">
+        <DialogContent className="max-w-6xl" aria-describedby={undefined}>
           <DialogHeader>
             <DialogTitle>Select cover image</DialogTitle>
           </DialogHeader>
@@ -62,8 +56,7 @@ export default function MediaPickerDialog({ images, value, onChange }: Props) {
                 onClick={() => {
                   onChange(image.id);
                   setOpen(false);
-                }}
-              >
+                }}>
                 <Image
                   src={image.url}
                   alt={image.name}

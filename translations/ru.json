@@ -43,5 +43,18 @@
     "messageMax": "Сообщение не должно превышать 500 символов.",
     "contactRequired": "Пожалуйста, укажите способ связи.",
     "contactMax": "Максимум 150 символов."
+  },
+  "SignUpPage": {
+    "SignUpMeta": "Регистрация",
+    "SignUpPageDescription": "Зарегистрируйтесь через Google, чтобы получить доступ к Izbushka.",
+    "title": "Создать аккаунт",
+    "description": "Продолжите с аккаунтом Google.",
+    "continueWithGoogle": "Продолжить с Google",
+    "loading": "Вход...",
+    "alreadyHaveAccount": "Уже есть аккаунт?",
+    "signIn": "Войти",
+    "termsNotice": "Продолжая, вы соглашаетесь с",
+    "and": "и",
+    "errorGeneric": "Что-то пошло не так. Попробуйте ещё раз."
   }
 }

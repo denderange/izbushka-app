@@ -1,6 +1,7 @@
 "use server";
 
 import slugify from "slugify";
+import { revalidatePath } from "next/cache";
 import prisma from "@/lib/prisma";
 
 import { CreateStorySchema, TCreateStoryInput } from "@/lib/validation/story";
@@ -62,6 +63,8 @@ export async function createStory(data: TCreateStoryInput) {
       pages: true,
     },
   });
+
+  revalidatePath("/dashboard/stories");
 
   return {
     success: true,

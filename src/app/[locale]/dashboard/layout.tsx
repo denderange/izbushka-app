@@ -9,7 +9,7 @@ export default async function DashboardLayout({
   await requireAdmin();
 
   return (
-    <div className="space-y-6">
+    <div className="space-y-6 min-h-[calc(100vh-4rem)]">
       <DashboardNav />
 
       <div className="p-4">{children}</div>
